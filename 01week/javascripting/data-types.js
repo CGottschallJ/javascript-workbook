@@ -55,26 +55,23 @@ console.log(addTogether(7, 9));
 
 /*Write a JavaScript program that runs only when 2 things are true.
 */
-function bothAreTrue() {
-  let num1 = 9;
-  let num2 = 17;
-  if(num1 >= 9 && num2 < 20) {
-    return("These are both true!");
+function bothAreTrue(arg1, arg2) {
+  if(arg1 && arg2){
+    return "both are true!"
   }
 }
-console.log(bothAreTrue());
+console.log(bothAreTrue([],[]));
 
 
 /*Write a JavaScript program that runs when 1 of 2 things are true.
 */
-function oneIsTrue() {
-  let num1 = 55;
-  let num2 = 108;
-  if(num1 > num2 || num2 > num1) {
+function oneIsTrue(arg1, arg2) {
+  if(arg1 || arg2) {
     return ("It's anyone's guess which one is true!");
   }
 }
-console.log(oneIsTrue());
+console.log(oneIsTrue(true, false));
+
 /*Write a JavaScript program that runs when both things are not true.
 */
 function bothAreFalse() {
