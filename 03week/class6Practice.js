@@ -43,7 +43,8 @@ do {
   console.log(doNumCounter);
   doNumCounter++;
 } while (doNumCounter < 1000);
-  console.log(doNumCounter);
+
+console.log(doNumCounter);
 
 console.log('');
 console.log('Step 4: Use a do...while loop to console.log the numbers from 1 to 1000');

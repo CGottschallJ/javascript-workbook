@@ -10,6 +10,7 @@ const rl = readline.createInterface({
 let board = [];
 let solution = '';
 let letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+let numOfGuesses = 1;
 
 function printBoard() {
   for (let i = 0; i < board.length; i++) {
@@ -18,6 +19,7 @@ function printBoard() {
 }
 
 function generateSolution() {
+  solution = '';
   for (let i = 0; i < 4; i++) {
     const randomIndex = getRandomInt(0, letters.length);
     solution += letters[randomIndex];
@@ -27,14 +29,48 @@ function generateSolution() {
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
+// Solut [a,b,c,d]
+//Guess  [a,c,d,c]
 
-function generateHint() {
-  // your code here
+
+function generateHint(guess) {
+  let countCorrect = 0;
+  let countRightLetter = 0;
+  for(let i = 0; i < solution.length; i++) {
+    if(guess[i] === solution[i]) {
+      countCorrect++;
+    } else {
+      let wrongSpot = solution.indexOf(guess[i])
+      if(wrongSpot >= 0 && solution[wrongSpot] !== guess[wrongSpot]) {
+        countRightLetter++;
+      }
+    }
+  }
+  return countCorrect + '-' + countRightLetter;
 }
 
 function mastermind(guess) {
-  solution = 'abcd'; // Comment this out to generate a random solution
-  // your code here
+  //console.log('This is a your guess', guess);
+  //solution = 'abcd'; // Comment this out to generate a random solution
+  // Code to trim the guess
+  guess = guess.toLowerCase().trim();
+  let hint = generateHint(guess);
+  board.push(`Guess #${numOfGuesses} was '${guess}' Hint: ${hint}`);
+  numOfGuesses++;
+  if(guess === solution){
+    console.log('CONGRATULATIONS!!! YOU ARE NOW A MASTERMIND! A new solution has been selected. Please play again!');
+    board = [];
+    numOfGuesses = 1;
+    generateSolution();
+    return 'You guessed it!'
+  }
+  if(numOfGuesses > 10) {
+    console.log("You are out of guesses. Better luck next time!");
+    board = [];
+    numOfGuesses = 1;
+    generateSolution();
+    return;
+  }
 }
 
 
@@ -73,5 +109,6 @@ if (typeof describe === 'function') {
 } else {
 
   generateSolution();
+  //console.log(solution);
   getPrompt();
 }
