@@ -95,16 +95,16 @@ else if search value is < middle value
 if the value is not in the array
   return did not find in array
 */
-let dataArr = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-function binarySearch(dataArr, item) {
-  let middle = Math.floor(dataArr.length / 2);
+function binarySearch(dataArr, item start = 0, end = dataArr.length-1) {
+  let middle = Math.floor(start + (end - start) / 2);
   if(item === dataArr[middle]) return middle;
-  else if(item < dataArr[middle]) return binarySearch(dataArr.slice(0, middle -1), item);
-  else if(item > dataArr[middle]) return binarySearch(dataArr.slice(middle +1), item);
+  else if(item < dataArr[middle]) return binarySearch(dataArr, item, start, middle-1);
+  else if(item > dataArr[middle]) return binarySearch(dataArr, item, middle + 1, end);
   return -1;
 }
-binarySearch(dataArr, 7);
+console.log(dataArr);
+console.log(binarySearch(dataArr));
 
 
 // Tests
