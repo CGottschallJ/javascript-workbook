@@ -12,9 +12,20 @@ function Checker() {
   // Your code here
 }
 
+
+
+//------------------------------------------------------------------------------
+  //Create a game board that is an array 8x8 with null as the values of each index.
+  //Next, a loop will be needed to create the 8 rows.
+    //This can be done with a for loop that way it can run through the entire board.
+    //for(let row = 0; row < 8; row++)
+  //Then push the value of null to all inde of the 8 rows.
+
+//------------------------------------------------------------------------------
+
+
 function Board() {
   this.grid = [];
-  // creates an 8x8 array, filled with null values
   this.createGrid = function() {
     // loop to create the 8 rows
     for (let row = 0; row < 8; row++) {
