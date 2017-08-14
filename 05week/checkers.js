@@ -10,18 +10,16 @@ const rl = readline.createInterface({
 
 function Checker() {
   // Your code here
+  /*------------------------------------------------------------------------------
+   1. Create 24 checker pieces with r and b.
+      a. 12 for each
+   2. Populate the board with these pieces.
+
+  ------------------------------------------------------------------------------*/
+
+
 }
 
-
-
-//------------------------------------------------------------------------------
-  //Create a game board that is an array 8x8 with null as the values of each index.
-  //Next, a loop will be needed to create the 8 rows.
-    //This can be done with a for loop that way it can run through the entire board.
-    //for(let row = 0; row < 8; row++)
-  //Then push the value of null to all inde of the 8 rows.
-
-//------------------------------------------------------------------------------
 
 
 function Board() {
@@ -62,7 +60,9 @@ function Board() {
     }
     console.log(string);
   };
-
+  /*
+    1. Populate the baord with the pieces
+  */
   // Your code here
 }
 function Game() {
@@ -71,6 +71,17 @@ function Game() {
 
   this.start = function() {
     this.board.createGrid();
+    /*
+      1. Check for legal move. (isLegal)
+        a. is there a piece there?
+        b. is there a piece in the end spot?
+        a. 1 up and 1 to right or left.
+      2. Check for legal skip move.
+        a. 2 up and 2 to the right or left
+        b. has to be an empty space.
+
+    */
+
     // Your code here
   };
 }
