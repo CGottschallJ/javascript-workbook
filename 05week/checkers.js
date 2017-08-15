@@ -8,22 +8,20 @@ const rl = readline.createInterface({
 });
 
 
-function Checker() {
+function Checker(color) {
   // Your code here
-  /*------------------------------------------------------------------------------
-   1. Create 24 checker pieces with r and b.
-      a. 12 for each
-   2. Populate the board with these pieces.
-
-  ------------------------------------------------------------------------------*/
-
+  if (color === 'white') {
+    this.symbol = 'X';
+  } else {
+    this.symbol = 'O';
+  }
 
 }
 
-
-
 function Board() {
   this.grid = [];
+  this.checkers = [];
+  // creates an 8x8 array, filled with null values
   this.createGrid = function() {
     // loop to create the 8 rows
     for (let row = 0; row < 8; row++) {
@@ -60,37 +58,65 @@ function Board() {
     }
     console.log(string);
   };
-  /*
-    1. Populate the baord with the pieces
-  */
-  // Your code here
+
+
+  this.createCheckers = function() {
+    // [row, col]
+    const whitePos = [
+      [0, 1], [0, 3], [0, 5], [0, 7],
+      [1, 0], [1, 2], [1, 4], [1, 6],
+      [2, 1], [2, 3], [2, 5], [2, 7],
+    ]
+    for (let i = 0; i < 12; i++) {
+      let whiteRow = whitePos[i][0];
+      let whiteCol = whitePos[i][1];
+      let whiteChecker = new Checker('white');
+      this.checkers.push(whiteChecker);
+      this.grid[whiteRow][whiteCol] = whiteChecker;
+    }
+
+    const blackPos = [
+      [5, 0], [5, 2], [5, 4], [5, 6],
+      [6, 1], [6, 3], [6, 5], [6, 7],
+      [7, 0], [7, 2], [7, 4], [7, 6],
+    ]
+    for (let i = 0; i < 12; i++) {
+      let blackRow = blackPos[i][0];
+      let blackCol = blackPos[i][1];
+      let blackChecker = new Checker('black');
+      this.checkers.push(blackChecker);
+      this.grid[blackRow][blackCol] = blackChecker;
+    }
+  }
+
+  // Your code here - Another function that does...
 }
+
 function Game() {
 
   this.board = new Board();
 
   this.start = function() {
     this.board.createGrid();
-    /*
-      1. Check for legal move. (isLegal)
-        a. is there a piece there?
-        b. is there a piece in the end spot?
-        a. 1 up and 1 to right or left.
-      2. Check for legal skip move.
-        a. 2 up and 2 to the right or left
-        b. has to be an empty space.
-
-    */
-
-    // Your code here
+    this.board.createCheckers();
+    this.board.viewGrid();  // test - remove when done
+    // moveChecker()
+    // take the given 2 numbers from the user input
+    // set the source to the destination
+    this.board.grid
+    // null the source value
   };
 }
 
 function getPrompt() {
   game.board.viewGrid();
+  // Ask user for source piece
   rl.question('which piece?: ', (whichPiece) => {
+    // Feed desination piece to another prompt for destination piece
     rl.question('to where?: ', (toWhere) => {
+      // Move the checker
       game.moveChecker(whichPiece, toWhere);
+      // Render the board again, with moved piece
       getPrompt();
     });
   });
