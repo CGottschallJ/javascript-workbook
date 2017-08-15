@@ -1,0 +1,82 @@
+body {
+  background-image: url(../images/body-backround.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: auto;
+  background-attachment: fixed;
+}
+.page-header {
+  text-align: center;
+  padding-top: 25px;
+  justify-content: center;
+}
+h1 {
+  font-size: 100px;
+  font-family: 'Merienda One', cursive;
+  color: #541C00;
+}
+h2{
+  font-size: 50px;
+  font-weight: bolder;
+  text-decoration: underline;
+  font-family: 'Quicksand', sans-serif;
+  color: #541C00;
+}
+.container-fluid {
+  padding: 50px;
+}
+.mainsec{
+  justify-content: center;
+  text-align: center;
+}
+
+/* ---------- NAV SECTION ----------*/
+.navrow {
+  justify-content: center;
+}
+
+.navlink {
+  font-size: 30px;
+  color: #541C00;
+  background: #E0D6CC;
+  border: 10px solid #E0D6CC;
+  border-radius: 10px;
+  margin: 20px;
+  box-shadow: 3px 3px 10px #F0EBE6;
+}
+
+
+/* ---------- ABOUT SECTION ----------- */
+
+.aboutphoto {
+  height: 300px;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
+.aboutpara {
+  margin: 20px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  color: black;
+}
+
+/* ---------- EVENTS SECTION ---------- */
+
+.eventcal {
+  height: 550px;
+  width: 600px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.row {
+  margin: 50px;
+}
+
+
+.eventsec {
+
+  height: 500px;
+}
