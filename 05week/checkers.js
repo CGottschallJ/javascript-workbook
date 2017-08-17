@@ -100,12 +100,25 @@ function Game() {
     this.board.createGrid();
     this.board.createCheckers();
     this.board.viewGrid();  // test - remove when done
-    // moveChecker()
     // take the given 2 numbers from the user input
     // set the source to the destination
-    this.board.grid
     // null the source value
   };
+  this.moveChecker = (source, destination) => {
+    const pieceRow = parseInt(source.charAt(0));
+    const pieceCol = parseInt(source.charAt(1));
+    const moveRow = parseInt(destination.charAt(0));
+    const moveCol = parseInt(destination.charAt(1));
+    this.board.grid[moveRow][moveCol] = this.board.grid[pieceRow][pieceCol];
+    this.board.grid[pieceRow][pieceCol] = null;
+    if(Math.abs(moveRow - pieceRow) === 2) {
+      let killRow = moveRow - pieceRow > 0 ? pieceRow + 1 : moveRow + 1
+      let killCol = moveCol - pieceCol > 0 ? pieceCol + 1 : moveCol + 1
+      //console.log('This worked');
+      this.board.grid[killRow][killCol] = null;
+      this.board.checkers.pop();
+    }
+  }
 }
 
 function getPrompt() {
