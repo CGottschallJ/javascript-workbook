@@ -8,12 +8,19 @@ const rl = readline.createInterface({
 });
 
 
-function Checker() {
+function Checker(color) {
   // Your code here
+  if (color === 'white') {
+    this.symbol = 'X';
+  } else {
+    this.symbol = 'O';
+  }
+
 }
 
 function Board() {
   this.grid = [];
+  this.checkers = [];
   // creates an 8x8 array, filled with null values
   this.createGrid = function() {
     // loop to create the 8 rows
@@ -52,23 +59,77 @@ function Board() {
     console.log(string);
   };
 
-  // Your code here
+
+  this.createCheckers = function() {
+    // [row, col]
+    const whitePos = [
+      [0, 1], [0, 3], [0, 5], [0, 7],
+      [1, 0], [1, 2], [1, 4], [1, 6],
+      [2, 1], [2, 3], [2, 5], [2, 7],
+    ]
+    for (let i = 0; i < 12; i++) {
+      let whiteRow = whitePos[i][0];
+      let whiteCol = whitePos[i][1];
+      let whiteChecker = new Checker('white');
+      this.checkers.push(whiteChecker);
+      this.grid[whiteRow][whiteCol] = whiteChecker;
+    }
+
+    const blackPos = [
+      [5, 0], [5, 2], [5, 4], [5, 6],
+      [6, 1], [6, 3], [6, 5], [6, 7],
+      [7, 0], [7, 2], [7, 4], [7, 6],
+    ]
+    for (let i = 0; i < 12; i++) {
+      let blackRow = blackPos[i][0];
+      let blackCol = blackPos[i][1];
+      let blackChecker = new Checker('black');
+      this.checkers.push(blackChecker);
+      this.grid[blackRow][blackCol] = blackChecker;
+    }
+  }
+
+  // Your code here - Another function that does...
 }
+
 function Game() {
 
   this.board = new Board();
 
   this.start = function() {
     this.board.createGrid();
-    // Your code here
+    this.board.createCheckers();
+    this.board.viewGrid();  // test - remove when done
+    // take the given 2 numbers from the user input
+    // set the source to the destination
+    // null the source value
   };
+  this.moveChecker = (source, destination) => {
+    const pieceRow = parseInt(source.charAt(0));
+    const pieceCol = parseInt(source.charAt(1));
+    const moveRow = parseInt(destination.charAt(0));
+    const moveCol = parseInt(destination.charAt(1));
+    this.board.grid[moveRow][moveCol] = this.board.grid[pieceRow][pieceCol];
+    this.board.grid[pieceRow][pieceCol] = null;
+    if(Math.abs(moveRow - pieceRow) === 2) {
+      let killRow = moveRow - pieceRow > 0 ? pieceRow + 1 : moveRow + 1
+      let killCol = moveCol - pieceCol > 0 ? pieceCol + 1 : moveCol + 1
+      //console.log('This worked');
+      this.board.grid[killRow][killCol] = null;
+      this.board.checkers.pop();
+    }
+  }
 }
 
 function getPrompt() {
   game.board.viewGrid();
+  // Ask user for source piece
   rl.question('which piece?: ', (whichPiece) => {
+    // Feed desination piece to another prompt for destination piece
     rl.question('to where?: ', (toWhere) => {
+      // Move the checker
       game.moveChecker(whichPiece, toWhere);
+      // Render the board again, with moved piece
       getPrompt();
     });
   });
