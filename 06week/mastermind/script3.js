@@ -30,6 +30,13 @@ document.addEventListener('DOMContentLoaded', () => {
         this.code.push(getRandomIndex);
       }
     },
+
+
+    showSolution: function(){
+
+    },
+
+
     createPalette: function () {
        const colorPalette = document.getElementById('colorPalette');
        for(let i = 0; i < colorOptions.length; i++){

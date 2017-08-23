@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
 /*****************************************************************/
 
 /*********************** Gameplay Funciton ***********************/
-  function colorToBoard(){
+  function colorToBoard(color) {
 
   }
 
