@@ -1,0 +1,118 @@
+
+
+body {
+  background: #c0c0c0;
+}
+/****************** PALETTE SECTION *******************/
+.paletteContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.paletteTable {
+  /*width: 30%;*/
+  height: 60px;
+}
+
+.paletteRow {
+  height: 60px;
+}
+
+.paletteBlock {
+  border: 3px solid black;
+  width: 50px;
+  font-size: 14px;
+  border-radius: 50px;
+  font-weight: bolder;
+}
+
+.paletteBlock:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 6px 0px #6eb6dc;
+}
+
+.color_red {
+  background-color: red;
+}
+
+.color_blue {
+  background-color: blue;
+}
+
+.color_green {
+  background-color: green;
+}
+
+.color_white {
+  background-color: white;
+  color: black;
+}
+
+.color_yellow {
+  background-color: yellow;
+  color: black;
+}
+
+.color_purple {
+  background-color: purple;
+}
+
+.color_orange {
+  background-color: orange;
+}
+
+.color_black {
+  background-color: black;
+  color: white;
+}
+
+/******************* GAME BOARD CONTAINER **********************/
+
+.gameBoardContainer {
+  display: flex;
+  justify-content: center;
+  height: 500px;
+  padding-top: 25px;
+  text-align: center;
+}
+
+.gameBoardTable {
+  height: 500px;
+  width: 250px;
+  border: 2px solid black;
+  background: #33414a;
+}
+
+.boardCol {
+  background: #5d6c73;
+  border-radius: 100px;
+}
+
+.hintCol {
+  background: #6eb6dc;
+  border-radius: 10px;
+}
+
+/******************* BUTTON CONTAINER ***********************/
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+  height: 50px;
+}
+button {
+  height: 50px;
+  width: 80px;
+  font-size: 15px;
+  background: #5d6c73;
+  padding: 5px;
+  margin: 25px;
+  border-radius: 10px
+  color: #6eb6dc;
+
+}
